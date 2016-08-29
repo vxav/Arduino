@@ -27,6 +27,8 @@ void setup() {
   strip.begin();
   Coefficient = TempMax - TempMin;
   Coefficient = 255/Coefficient;
+  
+  effectPolice();  // Startup effect
 }
 
 
