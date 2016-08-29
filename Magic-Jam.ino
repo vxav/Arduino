@@ -29,7 +29,7 @@ void setup() {
   Coefficient = TempMax - TempMin;
   Coefficient = 255/Coefficient;
   
-  //effectPolice();  // Startup effect
+  effectPoliceFull(3000);  // Startup effect, duration in ms in brackets
 }
 
 
@@ -100,14 +100,36 @@ uint32_t Color(byte r, byte b, byte g)
 }
 
 
-void effectPolice() {
-  
-  strip.setPixelColor(blue,Color(0,0,255));
-  strip.setPixelColor(red,Color(255,0,0));
-  strip.show();
-  
-  if (blue==numPixel){blue = 0;}else{blue++;}
-  if (red==numPixel){red = 0;}else{red++;}
-  
-  delay(125); // (1000ms / 8) meaning it does 2 rounds in 1 second with 4 LEDs
+void effectPoliceFull(int i) {
+
+  while (i>0) {
+    strip.setPixelColor(blue,Color(0,0,255));
+    strip.setPixelColor(red,Color(255,0,0));
+    strip.show();
+    
+    if (blue==3){blue = 0;}else{blue++;}
+    if (red==3){red = 0;}else{red++;}
+    
+    delay(250); // (1000ms / 8) meaning it does 2 rounds in 1 second with 4 LEDs
+
+    i=i-250;
+  }
+}
+
+void effectPoliceLight(int i) {
+
+  while (i>0) {
+    strip.setPixelColor(blue,Color(0,0,255));
+    strip.setPixelColor((3 - blue),Color(0,0,0));
+    strip.setPixelColor(red,Color(255,0,0));
+    strip.setPixelColor((3 - red),Color(0,0,0));
+    strip.show();
+    
+    if (blue==3){blue = 0;}else{blue++;}
+    if (red==3){red = 0;}else{red++;}
+    
+    delay(250); // (1000ms / 8) meaning it does 2 rounds in 1 second with 4 LEDs
+
+    i=i-250;
+  }
 }
