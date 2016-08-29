@@ -1,16 +1,16 @@
 #include <Adafruit_WS2801.h>   // Link to WS2801 library: https://github.com/adafruit/Adafruit-WS2801-Library/blob/master/Adafruit_WS2801.h
 
 int dataPin = 9;     // LED strip data
-int clockPin = 10;  // LED strip clock
+int clockPin = 10;   // LED strip clock
 
 int t = 0;
 
-int thermPin = 0;         // Thermistor
-int val = 0;                  // Temperature as 255 scale value
-byte TempMax = 30;   // Temperature at which the lamp is completely Red
+int thermPin = 0;     // Thermistor
+int val = 0;          // Temperature as 255 scale value
+byte TempMax = 30;    // Temperature at which the lamp is completely Red
 byte TempMin = 15;    // Temperature at which the lamp is completely Red
-byte Coefficient = 0;    // Coefficient used to convert celsius temperature into a 255 scale value
-int UpdateInt = 2000;   // Interval between temperature checks (in ms)
+byte Coefficient = 0; // Coefficient used to convert celsius temperature into a 255 scale value
+int UpdateInt = 2000; // Interval between temperature checks (in ms)
 
 Adafruit_WS2801 strip = Adafruit_WS2801(3, dataPin, clockPin);
 
