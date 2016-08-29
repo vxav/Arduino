@@ -2,7 +2,10 @@
 
 int dataPin = 9;     // LED strip data
 int clockPin = 10;   // LED strip clock
-byte numPixel = 4;   // Number of LEDs in the LED strip
+byte numPixel = 4;   // Number of LEDs in the LED strip < THIS VARIABLE IS NOT DYNAMIC
+
+byte blue = 0;
+byte red = 2;
 
 int t = 0;
 
@@ -55,6 +58,20 @@ void loop() {
 
 
 //////////////////////////////////
+// Gets temperature
+//////////////////////////////////
+double Thermistor(int RawADC) {
+ double Temp;
+ Temp = log(10000.0*((1024.0/RawADC-1)));
+//         =log(10000.0/(1024.0/RawADC-1)) // for pull-up configuration
+ Temp = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 * Temp * Temp ))* Temp );
+ Temp = Temp - 273.15;            // Convert Kelvin to Celcius
+
+ return Temp;
+}
+
+
+//////////////////////////////////
 // Control LED strip
 //////////////////////////////////
 void setColor(uint32_t c) {
@@ -82,15 +99,14 @@ uint32_t Color(byte r, byte b, byte g)
 }
 
 
-//////////////////////////////////
-// Gets temperature
-//////////////////////////////////
-double Thermistor(int RawADC) {
- double Temp;
- Temp = log(10000.0*((1024.0/RawADC-1)));
-//         =log(10000.0/(1024.0/RawADC-1)) // for pull-up configuration
- Temp = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 * Temp * Temp ))* Temp );
- Temp = Temp - 273.15;            // Convert Kelvin to Celcius
-
- return Temp;
+void effectPolice {
+	
+	strip.setPixelColor(blue,Color(0,0,255));
+	strip.setPixelColor(red,Color(255,0,0));
+	strip.show();
+	
+	if (blue==numPixel){blue = 0;}else{blue++;}
+	if (red==numPixel){red = 0;}else{red++;}
+	
+	delay(125); // (1000ms / 8) meaning it does 2 rounds in 1 second with 4 LEDs
 }
