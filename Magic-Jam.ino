@@ -3,7 +3,6 @@
 int dataPin = 9;
 int clockPin = 10;
 int t = 0;
-const byte tiltPin = 3;
 int potPin = 2; 
 int thermPin = 0;
 int val = 0; 
@@ -14,7 +13,6 @@ Adafruit_WS2801 strip = Adafruit_WS2801(3, dataPin, clockPin);
 void setup() {
   Serial.begin(9600);
   strip.begin();
-  pinMode(tiltPin, INPUT);
   TempMax = 255/TempMax;
 }
 
