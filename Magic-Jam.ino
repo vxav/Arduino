@@ -2,6 +2,7 @@
 
 int dataPin = 9;     // LED strip data
 int clockPin = 10;   // LED strip clock
+byte numPixel = 4;   // Number of LEDs in the LED strip
 
 int t = 0;
 
@@ -12,7 +13,7 @@ byte TempMin = 15;    // Temperature at which the lamp is completely Red
 byte Coefficient = 0; // Coefficient used to convert celsius temperature into a 255 scale value
 int UpdateInt = 2000; // Interval between temperature checks (in ms)
 
-Adafruit_WS2801 strip = Adafruit_WS2801(3, dataPin, clockPin);
+Adafruit_WS2801 strip = Adafruit_WS2801(numPixel, dataPin, clockPin);
 
 
 //////////////////////////////////
