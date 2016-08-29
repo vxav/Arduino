@@ -3,7 +3,7 @@
 int dataPin = 9;
 int clockPin = 10;
 int t = 0;
-int potPin = 2; 
+//int potPin = 2; 
 int thermPin = 0;
 int val = 0; 
 byte TempMax = 30;   // Temperature at which the lamp is completely Red
