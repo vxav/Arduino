@@ -3,7 +3,7 @@
 /// LED strip stuff
 int dataPin = 9;     // LED strip data
 int clockPin = 10;   // LED strip clock
-byte numPixel = 31;   // Number of LEDs in the LED strip < THIS VARIABLE IS NOT DYNAMIC
+byte numPixel = 12;   // Number of LEDs in the LED strip < THIS VARIABLE IS NOT DYNAMIC
 
 Adafruit_WS2801 strip = Adafruit_WS2801(numPixel, dataPin, clockPin);
 
